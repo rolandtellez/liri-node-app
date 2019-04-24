@@ -10,6 +10,8 @@ var axios = require("axios");
 
 var fs = require("fs");
 
+var moment = require("moment");
+
 var nodeArgs = process.argv;
 
 
@@ -36,7 +38,7 @@ var concertThis = function (artist) {
         .then(function (response) {
             console.log("Venue: " + response.data[0].venue.name);
             console.log("Location: " + response.data[0].venue.city);
-            console.log("Date: " + response.data[0].datetime);
+            console.log("Date: " + moment(response.data[0].datetime).format("MM-DD-YYYY"));
         })
         .catch(function (error) {
             console.log(error);
